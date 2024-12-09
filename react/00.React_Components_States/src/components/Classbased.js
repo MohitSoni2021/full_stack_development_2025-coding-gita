@@ -8,6 +8,7 @@ class CounterClass extends Component {
     super(props);
     this.state = {
       count: 0,
+      qty:0
     };
   }
   componentDidMount() {
@@ -22,18 +23,22 @@ class CounterClass extends Component {
   }
 
   increment = () => {
-    this.setState({ count: this.state.count + 1 });
+    if(this.state.qty < 25){
+      this.setState({ qty: this.state.qty + 1 });
+    }
   };
 
   decrement = () => {
-    this.setState({ count: this.state.count - 1 });
+    if(this.state.qty){
+      this.setState({ qty: this.state.qty - 1 }); 
+    }
   };
 
   render() {
     return (
       <div>
         <h2>Counter (Class-Based)</h2>
-        <p>Count: {this.state.count}</p>
+        <p>qty: {this.state.qty}</p>
         <button onClick={this.increment}>Increment</button>
         <button onClick={this.decrement}>Decrement</button>
       </div>
